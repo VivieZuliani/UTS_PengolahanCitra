@@ -16,9 +16,41 @@ Anggota Kelompok :
 ### Project
 #####  1. RGB to HSV
 #####  2. Histogram
-#####  3. Brightness dan Contrast
+#####  3. Brightness and Contrast
 #####  4. Contours
 #####  5. Tampilan Setelah Dilakukan Running
+
+
+### Information 
+> Sebelum memulai untuk mengisi script dari RGB to HSV, di perlukan script `button` untuk button RGB to HSV, button Histogram, button Brightness and Contrast, dan button Contours. Scriptnya yaitu :
+```
+st.title('Image Manipulation App')
+
+uploaded_file = st.file_uploader("Choose an image...", type=["jpg", "jpeg", "png"])
+if uploaded_file is not None:
+    file_bytes = np.asarray(bytearray(uploaded_file.read()), dtype=np.uint8)
+    image = cv2.imdecode(file_bytes, cv2.IMREAD_COLOR)
+
+    st.image(image, caption='Original Image', use_column_width=True)
+
+    if st.button('Convert RGB to HSV'):
+        hsv_image = convert_rgb_to_hsv(image)
+        st.image(hsv_image, caption='HSV Image', use_column_width=True)
+
+    if st.button('Show Histogram'):
+        plt = plot_histogram(image)
+        st.pyplot(plt)
+
+    brightness = st.slider("Brightness", min_value=-100, max_value=100, value=0)
+    contrast = st.slider("Contrast", min_value=-100, max_value=100, value=0)
+    if st.button('Adjust Brightness and Contrast'):
+        bc_image = adjust_brightness_contrast(image, brightness, contrast)
+        st.image(bc_image, caption='Brightness and Contrast Adjusted Image', use_column_width=True)
+
+    if st.button('Find Contours'):
+        contours_image = find_contours(image)
+        st.image(contours_image, caption='Image with Contours', use_column_width=True)
+```
 
 ---
 #####  1. RGB to HSV
@@ -45,7 +77,7 @@ def plot_histogram(image):
 
 ```
 
-#####  3. Brightness dan Contrast
+#####  3. Brightness and Contrast
 ```
 def adjust_brightness_contrast(image, brightness=0, contrast=0):
     new_image = np.zeros(image.shape, image.dtype)
