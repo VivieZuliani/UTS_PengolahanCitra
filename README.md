@@ -14,11 +14,11 @@ Anggota Kelompok :
 | Alfaza Putra Adjie Ariefiansyah | 312210512 |
 
 ### Project
-#####  1. RGB to HSV
-#####  2. Histogram
-#####  3. Brightness and Contrast
-#####  4. Contours
-#####  5. Tampilan Setelah Dilakukan Running
+>  1. RGB to HSV
+>  2. Histogram
+>  3. Brightness and Contrast
+>  4. Contours
+>  5. Tampilan Setelah Dilakukan Running
 
 
 ### Information 
